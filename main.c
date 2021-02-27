@@ -42,6 +42,7 @@ SPDX-License-Identifier: MIT-0
 static uint8_t current_demo = 1;
 volatile bool fps_flag = false;
 volatile bool switch_flag = true;
+volatile bool flush_flag = true;
 static float fx_fps;
 static float fb_fps;
 static uint32_t drawn = 0;
@@ -270,16 +271,25 @@ bool fps_timer_callback(struct repeating_timer *t) {
     return true;
 }
 
+bool flush_timer_callback(struct repeating_timer *t) {
+    flush_flag = true;
+    return true;
+}
+
+
 int main()
 {
     struct repeating_timer switch_timer;
     struct repeating_timer fps_timer;
+    struct repeating_timer flush_timer;
 
     color_t red = hagl_color(255, 0, 0);
     color_t green = hagl_color(0, 255, 0);
     color_t blue = hagl_color(0, 0, 255);
 
     stdio_init_all();
+
+    sleep_ms(5000);
 
     bb = hagl_init();
     if (bb) {
@@ -293,6 +303,7 @@ int main()
 
     add_repeating_timer_ms(10000, switch_timer_callback, NULL, &switch_timer);
     add_repeating_timer_ms(1000, fps_timer_callback, NULL, &fps_timer);
+    add_repeating_timer_ms(33, flush_timer_callback, NULL, &flush_timer);
 
     void (*demo[17]) ();
 
@@ -314,12 +325,18 @@ int main()
     demo[15] = put_character_demo;
     demo[16] = put_text_demo;
 
-    switch_flag = 1;
-
     while (1) {
 
         (*demo[current_demo])();
         drawn++;
+
+#ifdef HAGL_HAL_USE_DOUBLE_BUFFER
+        if (flush_flag) {
+            flush_flag = 0;
+            hagl_flush();
+            fb_fps = fps();
+        }
+#endif /* HAGL_HAL_USE_DOUBLE_BUFFER */
 
         if (switch_flag) {
             switch_flag = 0;
@@ -327,7 +344,6 @@ int main()
             current_demo = (current_demo + 1) % 17;
             fx_fps = aps(APS_RESET);
             drawn = 0;
-
         }
 
         if (fps_flag) {
@@ -336,11 +352,18 @@ int main()
             fx_fps = aps(drawn);
             drawn = 0;
 
-            swprintf(message,  sizeof(message), L"%.*f APS       ", 0, fx_fps);
             hagl_set_clip_window(0, 0, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1);
 
-            color_t color = hagl_color(0, 255, 0);
-            hagl_put_text(message, 8, 4, color, font6x9);
+            /* Print the message on upper left corner. */
+            swprintf(message,  sizeof(message), L"%.*f APS       ", 0, fx_fps);
+            hagl_put_text(message, 8, 4, green, font6x9);
+
+#ifdef HAGL_HAL_USE_DOUBLE_BUFFER
+            /* Print the message on lower right corner. */
+            swprintf(message, sizeof(message), L"%.*f FPS  ", 0, fb_fps);
+            hagl_put_text(message, DISPLAY_WIDTH - 40, DISPLAY_HEIGHT - 14, green, font6x9);
+#endif /* HAGL_HAL_USE_DOUBLE_BUFFER */
+
             hagl_set_clip_window(0, 20, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 21);
         }
     }

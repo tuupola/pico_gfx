@@ -34,5 +34,6 @@ add_subdirectory(external/hagl_hal)
 target_compile_definitions(firmware PRIVATE
   NO_MENUCONFIG=1
   HAGL_HAL_USE_SINGLE_BUFFER=1
+#  HAGL_HAL_USE_DOUBLE_BUFFER=1
 )
 
