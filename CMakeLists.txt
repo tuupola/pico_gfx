@@ -23,17 +23,18 @@ pico_enable_stdio_uart(firmware 0)
 # Add the standard library to the build
 target_link_libraries(firmware pico_stdlib)
 
-# Add any user requested libraries
-target_link_libraries(firmware hardware_spi hardware_dma hagl hagl_hal)
-
 pico_add_extra_outputs(firmware)
 
+# Add HAGL and the HAL
 add_subdirectory(external/hagl)
 add_subdirectory(external/hagl_hal)
+target_link_libraries(firmware hagl hagl_hal)
 
 target_compile_definitions(firmware PRIVATE
-  NO_MENUCONFIG=1
-  HAGL_HAL_USE_SINGLE_BUFFER=1
-#  HAGL_HAL_USE_DOUBLE_BUFFER=1
+  NO_MENUCONFIG
+# HAGL_HAL_USE_SINGLE_BUFFER
+  HAGL_HAL_USE_DOUBLE_BUFFER
+# HAGL_HAL_USE_DMA
+  HAGL_HAL_DEBUG
 )
 
