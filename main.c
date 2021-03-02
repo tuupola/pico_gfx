@@ -50,10 +50,12 @@ static uint32_t drawn = 0;
 static bitmap_t *bb;
 wchar_t message[32];
 
-static char primitive[17][32] = {
+static char primitive[19][32] = {
     "RGB BARS",
     "PIXELS",
     "LINES",
+    "VERTICAL LINES",
+    "HORIZONTAL LINES",
     "CIRCLES",
     "FILLED CIRCLES",
     "ELLIPSES",
@@ -150,6 +152,25 @@ void line_demo()
     int16_t y1 = (rand() % DISPLAY_HEIGHT + 20) - 20;
     color_t colour = rand() % 0xffff;
     hagl_draw_line(x0, y0, x1, y1, colour);
+}
+
+void vline_demo()
+{
+    int16_t x0 = (rand() % DISPLAY_WIDTH + 20) - 20;
+    int16_t y0 = (rand() % DISPLAY_HEIGHT + 20) - 20;
+    int16_t w = (rand() % DISPLAY_WIDTH + 20) - 20;
+    color_t colour = rand() % 0xffff;
+    hagl_draw_vline(x0, y0, w, colour);
+}
+
+
+void hline_demo()
+{
+    int16_t x0 = (rand() % DISPLAY_WIDTH + 20) - 20;
+    int16_t y0 = (rand() % DISPLAY_HEIGHT + 20) - 20;
+    int16_t h = (rand() % DISPLAY_WIDTH + 20) - 20;
+    color_t colour = rand() % 0xffff;
+    hagl_draw_vline(x0, y0, h, colour);
 }
 
 void rectangle_demo()
@@ -310,20 +331,22 @@ int main()
     demo[0] = rgb_demo;
     demo[1] = put_pixel_demo;
     demo[2] = line_demo;
-    demo[3] = circle_demo;
-    demo[4] = fill_circle_demo;
-    demo[5] = ellipse_demo;
-    demo[6] = fill_ellipse_demo;
-    demo[7] = triangle_demo;
-    demo[8] = fill_triangle_demo;
-    demo[9] = rectangle_demo;
-    demo[10] = fill_rectangle_demo;
-    demo[11] = round_rectangle_demo;
-    demo[12] = fill_round_rectangle_demo;
-    demo[13] = polygon_demo;
-    demo[14] = fill_polygon_demo;
-    demo[15] = put_character_demo;
-    demo[16] = put_text_demo;
+    demo[3] = vline_demo;
+    demo[4] = hline_demo;
+    demo[5] = circle_demo;
+    demo[6] = fill_circle_demo;
+    demo[7] = ellipse_demo;
+    demo[8] = fill_ellipse_demo;
+    demo[9] = triangle_demo;
+    demo[10] = fill_triangle_demo;
+    demo[11] = rectangle_demo;
+    demo[12] = fill_rectangle_demo;
+    demo[13] = round_rectangle_demo;
+    demo[14] = fill_round_rectangle_demo;
+    demo[15] = polygon_demo;
+    demo[16] = fill_polygon_demo;
+    demo[17] = put_character_demo;
+    demo[18] = put_text_demo;
 
     while (1) {
 
