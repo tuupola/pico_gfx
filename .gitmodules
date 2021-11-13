@@ -1,6 +1,6 @@
 [submodule "external/hagl_hal"]
 	path = external/hagl_hal
-	url = git@github.com:tuupola/hagl_pico_mipi.git
+	url = https://github.com/tuupola/hagl_pico_mipi.gits
 [submodule "external/hagl"]
 	path = external/hagl
-	url = git@github.com:tuupola/hagl.git
+	url = https://github.com/tuupola/hagl.git
