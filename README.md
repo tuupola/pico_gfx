@@ -14,7 +14,13 @@ $ cmake ..
 $ make -j8
 ```
 
-If you are using macOS you can then "flash" by putting the Pico into `BOOTSEL` mode and copying the uf2 file.
+You can then "flash" the firmware by putting the Pico into `BOOTSEL` mode and copying the uf2 file to the automatically mounted volume.
+
+```
+$ cp firmware.uf2 /run/media/<username>/RPI-RP2/
+```
+
+If you are using macOS the command would be the following.
 
 ```
 $ cp firmware.uf2 /Volumes/RPI-RP2
