@@ -5,12 +5,22 @@
 
 ## Compile
 
-Below instructions assume you have [Raspberry Pi Pico SDK](https://github.com/raspberrypi/pico-sdk) installed and `PICO_SDK_PATH` environment correctly set up.
+Below instructions assume you do not have [Raspberry Pi Pico SDK](https://github.com/raspberrypi/pico-sdk) installed yet.
+
+```
+$ git clone --recursive https://github.com/raspberrypi/pico-sdk.git
+$ git clone --recursive https://github.com/tuupola/pico_gfx.git
+$ cd pico_gfx/build
+$ cmake ..
+$ make -j8
+```
+
+If the SDK is already installed you can pass the installation path manually.
 
 ```
 $ git clone --recursive https://github.com/tuupola/pico_gfx.git
 $ cd pico_gfx/build
-$ cmake ..
+$ cmake .. -DPICO_SDK_PATH=../pico-sdk
 $ make -j8
 ```
 
