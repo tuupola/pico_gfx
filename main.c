@@ -326,7 +326,7 @@ int main()
     add_repeating_timer_ms(1000, fps_timer_callback, NULL, &fps_timer);
     add_repeating_timer_ms(33, flush_timer_callback, NULL, &flush_timer);
 
-    void (*demo[17]) ();
+    void (*demo[18]) ();
 
     demo[0] = rgb_demo;
     demo[1] = put_pixel_demo;
@@ -364,7 +364,7 @@ int main()
         if (switch_flag) {
             switch_flag = 0;
             printf("%d %s per second, FB %d FPS\r\n", (uint32_t)fx_fps, primitive[current_demo], (uint32_t)fb_fps);
-            current_demo = (current_demo + 1) % 17;
+            current_demo = (current_demo + 1) % 18;
             fx_fps = aps(APS_RESET);
             drawn = 0;
         }
