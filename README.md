@@ -35,3 +35,9 @@ If you are using macOS the command would be the following.
 ```
 $ cp firmware.uf2 /Volumes/RPI-RP2
 ```
+
+Alternatively you can use picotool to flash the firmware.
+
+```
+$ picotool load firmware.uf2 -f
+```
