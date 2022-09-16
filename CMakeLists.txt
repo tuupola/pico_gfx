@@ -14,7 +14,7 @@ project(firmware C CXX ASM)
 
 pico_sdk_init()
 
-add_executable(firmware main.c clock.c)
+add_executable(firmware main.c)
 
 pico_set_program_name(firmware "Pico GFX")
 pico_set_program_version(firmware "0.1")
