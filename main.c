@@ -33,7 +33,7 @@ SPDX-License-Identifier: MIT-0
 #include <sys/time.h>
 
 #include <hagl_hal.h>
-#include <bitmap.h>
+#include <hagl/bitmap.h>
 #include <hagl.h>
 #include <font6x9.h>
 #include <fps.h>
@@ -351,13 +351,13 @@ int main()
         (*demo[current_demo])();
         drawn++;
 
-#ifdef HAGL_HAL_USE_DOUBLE_BUFFER
+#ifdef HAGL_HAS_HAL_BACK_BUFFER
         if (flush_flag) {
             flush_flag = 0;
             hagl_flush(display);
             fps_update(&fps);
         }
-#endif /* HAGL_HAL_USE_DOUBLE_BUFFER */
+#endif /* HAGL_HAS_HAL_BACK_BUFFER */
 
         if (switch_flag) {
             switch_flag = 0;
@@ -379,11 +379,11 @@ int main()
             swprintf(message,  sizeof(message), L"%.*f APS       ", 0, aps.current);
             hagl_put_text(display, message, 8, 4, green, font6x9);
 
-#ifdef HAGL_HAL_USE_DOUBLE_BUFFER
+#ifdef HAGL_HAS_HAL_BACK_BUFFER
             /* Print the message on lower right corner. */
             swprintf(message, sizeof(message), L"%.*f FPS  ", 0, fps.current);
             hagl_put_text(display, message, DISPLAY_WIDTH - 40, DISPLAY_HEIGHT - 14, green, font6x9);
-#endif /* HAGL_HAL_USE_DOUBLE_BUFFER */
+#endif /* HAGL_HAS_HAL_BACK_BUFFER */
 
             hagl_set_clip_window(display, 0, 20, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 21);
         }
