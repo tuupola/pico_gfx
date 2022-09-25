@@ -316,7 +316,7 @@ int main()
     printf("Hello world!\n");
 
     hagl_clear(display);
-    hagl_set_clip_window(display, 0, 20, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 21);
+    hagl_set_clip(display, 0, 20, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 21);
 
     add_repeating_timer_ms(10000, switch_timer_callback, NULL, &switch_timer);
     add_repeating_timer_ms(1000, fps_timer_callback, NULL, &fps_timer);
@@ -373,7 +373,7 @@ int main()
             aps_update(&aps, drawn);
             drawn = 0;
 
-            hagl_set_clip_window(display, 0, 0, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1);
+            hagl_set_clip(display, 0, 0, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 1);
 
             /* Print the message on upper left corner. */
             swprintf(message,  sizeof(message), L"%.*f APS       ", 0, aps.current);
@@ -385,7 +385,7 @@ int main()
             hagl_put_text(display, message, DISPLAY_WIDTH - 40, DISPLAY_HEIGHT - 14, green, font6x9);
 #endif /* HAGL_HAS_HAL_BACK_BUFFER */
 
-            hagl_set_clip_window(display, 0, 20, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 21);
+            hagl_set_clip(display, 0, 20, DISPLAY_WIDTH - 1, DISPLAY_HEIGHT - 21);
         }
     }
 
