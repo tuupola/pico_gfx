@@ -72,7 +72,8 @@ static char primitive[19][32] = {
     "STRINGS"
 };
 
-void polygon_demo()
+void
+polygon_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -89,7 +90,8 @@ void polygon_demo()
     hagl_draw_polygon(display, 5, vertices, colour);
 }
 
-void fill_polygon_demo()
+void
+fill_polygon_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -106,7 +108,8 @@ void fill_polygon_demo()
     hagl_fill_polygon(display, 5, vertices, colour);
 }
 
-void circle_demo()
+void
+circle_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -115,7 +118,8 @@ void circle_demo()
     hagl_draw_circle(display, x0, y0, r, colour);
 }
 
-void fill_circle_demo()
+void
+fill_circle_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -124,7 +128,8 @@ void fill_circle_demo()
     hagl_fill_circle(display, x0, y0, r, colour);
 }
 
-void ellipse_demo()
+void
+ellipse_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -134,7 +139,8 @@ void ellipse_demo()
     hagl_draw_ellipse(display, x0, y0, a, b, colour);
 }
 
-void fill_ellipse_demo()
+void
+fill_ellipse_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -144,7 +150,8 @@ void fill_ellipse_demo()
     hagl_fill_ellipse(display, x0, y0, a, b, colour);
 }
 
-void line_demo()
+void
+line_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -154,7 +161,8 @@ void line_demo()
     hagl_draw_line(display, x0, y0, x1, y1, colour);
 }
 
-void vline_demo()
+void
+vline_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -164,7 +172,8 @@ void vline_demo()
 }
 
 
-void hline_demo()
+void
+hline_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -173,7 +182,8 @@ void hline_demo()
     hagl_draw_vline(display, x0, y0, h, colour);
 }
 
-void rectangle_demo()
+void
+rectangle_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -183,7 +193,8 @@ void rectangle_demo()
     hagl_draw_rectangle(display, x0, y0, x1, y1, colour);
 }
 
-void fill_rectangle_demo()
+void
+fill_rectangle_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -193,7 +204,8 @@ void fill_rectangle_demo()
     hagl_fill_rectangle(display, x0, y0, x1, y1, colour);
 }
 
-void put_character_demo()
+void
+put_character_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -203,7 +215,8 @@ void put_character_demo()
     hagl_put_char(display, ascii, x0, y0, colour, font6x9);
 }
 
-void put_text_demo()
+void
+put_text_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 80;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -213,7 +226,8 @@ void put_text_demo()
     hagl_put_text(display, L"YO¡ MTV raps2♥", x0, y0, colour, font6x9);
 }
 
-void put_pixel_demo()
+void
+put_pixel_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -221,7 +235,8 @@ void put_pixel_demo()
     hagl_put_pixel(display, x0, y0, colour);
 }
 
-void triangle_demo()
+void
+triangle_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -233,7 +248,8 @@ void triangle_demo()
     hagl_draw_triangle(display, x0, y0, x1, y1, x2, y2, colour);
 }
 
-void fill_triangle_demo()
+void
+fill_triangle_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -245,7 +261,8 @@ void fill_triangle_demo()
     hagl_fill_triangle(display, x0, y0, x1, y1, x2, y2, colour);
 }
 
-void rgb_demo()
+void
+rgb_demo()
 {
     uint16_t red = hagl_color(display, 255, 0, 0);
     uint16_t green = hagl_color(display, 0, 255, 0);
@@ -260,7 +277,8 @@ void rgb_demo()
     hagl_fill_rectangle(display, x2, 0, display->width, display->height, blue);
 }
 
-void round_rectangle_demo()
+void
+round_rectangle_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -271,7 +289,8 @@ void round_rectangle_demo()
     hagl_draw_rounded_rectangle(display, x0, y0, x1, y1, r, colour);
 }
 
-void fill_round_rectangle_demo()
+void
+fill_round_rectangle_demo()
 {
     int16_t x0 = (rand() % display->width + 20) - 20;
     int16_t y0 = (rand() % display->height + 20) - 20;
@@ -282,23 +301,30 @@ void fill_round_rectangle_demo()
     hagl_fill_rounded_rectangle(display, x0, y0, x1, y1, r, colour);
 }
 
-bool switch_timer_callback(struct repeating_timer *t) {
+bool
+switch_timer_callback(struct repeating_timer *t)
+{
     switch_flag = true;
     return true;
 }
 
-bool fps_timer_callback(struct repeating_timer *t) {
+bool
+fps_timer_callback(struct repeating_timer *t)
+{
     fps_flag = true;
     return true;
 }
 
-bool flush_timer_callback(struct repeating_timer *t) {
+bool
+flush_timer_callback(struct repeating_timer *t)
+{
     flush_flag = true;
     return true;
 }
 
 
-int main()
+int
+main()
 {
     stdio_init_all();
     sleep_ms(5000);
