@@ -45,12 +45,12 @@ target_compile_definitions(firmware PRIVATE
 # There are ready made config files for popular Pico displays.
 #
 
-include("external/hagl_hal/cmake/pimoroni-pico-display-pack.cmake")
+#include("external/hagl_hal/cmake/pimoroni-pico-display-pack.cmake")
 #include("external/hagl_hal/cmake/pimoroni-picosystem.cmake")
 #include("external/hagl_hal/cmake/waveshare-pico-lcd-096.cmake")
 #include("external/hagl_hal/cmake/waveshare-pico-lcd-130.cmake")
 #include("external/hagl_hal/cmake/waveshare-pico-lcd-144.cmake")
-#include("external/hagl_hal/cmake/waveshare-rp2040-lcd-096.cmake")
+include("external/hagl_hal/cmake/waveshare-rp2040-lcd-096.cmake")
 
 #
 # For other boards you can set the config manually here.
