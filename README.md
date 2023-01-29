@@ -48,23 +48,23 @@ Below testing was done with Waveshare [RP2040-LCD-0.96](https://www.waveshare.co
 
 |                               | Single | Double    | Double DMA | Triple DMA |
 |-------------------------------|--------|-----------|------------|------------|
-| hagl_put_pixel()              | 111637 |    277118 |     314984 |     314989 |
-| hagl_draw_line()              |   2495 |     15457 |      17564 |      17544 |
-| hagl_draw_vline()             |  48253 |     69240 |      78676 |      78676 |
-| hagl_draw_hline()             |  48221 |     69339 |      78793 |      78790 |
-| hagl_draw_circle()            |   1891 |     12006 |      13671 |      13673 |
-| hagl_fill_circle()            |   1401 |      8514 |       9696 |       9696 |
-| hagl_draw_ellipse()           |   1283 |      7504 |       8528 |       8540 |
-| hagl_fill_ellipse()           |    591 |      3646 |       4153 |       4144 |
-| hagl_draw_triangle()          |    845 |      5296 |       6024 |       6029 |
-| hagl_fill_triangle()          |    500 |       705 |        800 |        806 |
-| hagl_draw_rectangle()         |  12383 |     21737 |      24794 |      24753 |
-| hagl_fill_rectangle()         |   1324 |      9324 |      10582 |      10601 |
-| hagl_draw_rounded_rectangle() |   4369 |     16706 |      18980 |      18991 |
-| hagl_fill_rounded_rectangle() |   1202 |      8173 |       9282 |       9287 |
-| hagl_draw_polygon()           |    514 |      3211 |       3653 |       3652 |
-| hagl_fill_polygon()           |    299 |       423 |        472 |        474 |
-| hagl_put_char()               |   4630 |     24728 |      28071 |      28082 |
+| hagl_put_pixel()              | 117261 |    364294 |     364294 |     365326 |
+| hagl_draw_line()              |   2512 |     15655 |      17723 |      17794 |
+| hagl_draw_vline()             |  49632 |     72712 |      82412 |      82509 |
+| hagl_draw_hline()             |  49626 |     72637 |      82305 |      82497 |
+| hagl_draw_circle()            |   1912 |     13519 |      15345 |      15371 |
+| hagl_fill_circle()            |   1420 |      8571 |       9701 |       9744 |
+| hagl_draw_ellipse()           |   1273 |      7565 |       8543 |       8563 |
+| hagl_fill_ellipse()           |    596 |      3666 |       4153 |       4167 |
+| hagl_draw_triangle()          |    852 |      5348 |       6045 |       6080 |
+| hagl_fill_triangle()          |    501 |       699 |        806 |        806 |
+| hagl_draw_rectangle()         |  12517 |     22244 |      25103 |      25244 |
+| hagl_fill_rectangle()         |   1319 |      9406 |      10699 |      10712 |
+| hagl_draw_rounded_rectangle() |   4401 |     16984 |      19214 |      19288 |
+| hagl_fill_rounded_rectangle() |   1186 |      8223 |       9307 |       9347 |
+| hagl_draw_polygon()           |    507 |      3235 |       3661 |       3678 |
+| hagl_fill_polygon()           |    302 |       421 |        476 |        486 |
+| hagl_put_char()               |   4658 |     25170 |      28534 |      28443 |
 
 ## License
 
