@@ -49,10 +49,11 @@ static fps_instance_t fps;
 static aps_instance_t aps;
 static uint32_t drawn = 0;
 static hagl_backend_t *display;
+static hagl_bitmap_t glyph;
 
 wchar_t message[32];
 
-static char primitive[19][32] = {
+static char primitive[20][32] = {
     "RGB BARS",
     "PIXELS",
     "LINES",
@@ -71,7 +72,8 @@ static char primitive[19][32] = {
     "POLYGONS",
     "FILLED POLYGONS",
     "CHARACTERS",
-    "STRINGS"
+    "STRINGS",
+    "SCALED CHARACTERS"
 };
 
 void
@@ -218,6 +220,19 @@ put_character_demo()
 }
 
 void
+scaled_character_demo()
+{
+    int16_t x0 = (fast_rand() % display->width + 20) - 20;
+    int16_t y0 = (fast_rand() % display->height + 20) - 20;
+    color_t colour = fast_rand() % 0xffff;
+    char ascii = fast_rand() % 127;
+
+    if (0 == hagl_get_glyph(display, ascii, colour, &glyph, font6x9)) {
+        hagl_blit_xywh(display, x0, y0, 24, 36, &glyph);
+    }
+}
+
+void
 put_text_demo()
 {
     int16_t x0 = (fast_rand() % display->width + 20) - 80;
@@ -341,6 +356,9 @@ main()
     color_t green = hagl_color(display, 0, 255, 0);
     color_t blue = hagl_color(display, 0, 0, 255);
 
+    hagl_bitmap_init(&glyph, 6, 9, display->depth, NULL);
+    glyph.buffer = (uint8_t *) malloc(glyph.size);
+
     printf("Hello world!\n");
 
     hagl_clear(display);
@@ -350,7 +368,7 @@ main()
     add_repeating_timer_ms(1000, fps_timer_callback, NULL, &fps_timer);
     add_repeating_timer_ms(33, flush_timer_callback, NULL, &flush_timer);
 
-    void (*demo[18]) ();
+    void (*demo[20]) ();
 
     demo[0] = rgb_demo;
     demo[1] = put_pixel_demo;
@@ -371,6 +389,7 @@ main()
     demo[16] = fill_polygon_demo;
     demo[17] = put_character_demo;
     demo[18] = put_text_demo;
+    demo[19] = scaled_character_demo;
 
     fps_init(&fps);
     aps_init(&aps);
@@ -390,7 +409,7 @@ main()
         if (switch_flag) {
             switch_flag = 0;
             printf("%d %s per second, display %d FPS\r\n", (uint32_t)aps.current, primitive[current_demo], (uint32_t)fps.current);
-            current_demo = (current_demo + 1) % 18;
+            current_demo = (current_demo + 1) % 20;
             aps_reset(&aps);
             drawn = 0;
         }
