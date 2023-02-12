@@ -89,7 +89,7 @@ polygon_demo()
     int16_t y3 = (fast_rand() % display->height + 20) - 20;
     int16_t x4 = (fast_rand() % display->width + 20) - 20;
     int16_t y4 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     int16_t vertices[10] = {x0, y0, x1, y1, x2, y2, x3, y3, x4, y4};
     hagl_draw_polygon(display, 5, vertices, colour);
 }
@@ -107,7 +107,7 @@ fill_polygon_demo()
     int16_t y3 = (fast_rand() % display->height + 20) - 20;
     int16_t x4 = (fast_rand() % display->width + 20) - 20;
     int16_t y4 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     int16_t vertices[10] = {x0, y0, x1, y1, x2, y2, x3, y3, x4, y4};
     hagl_fill_polygon(display, 5, vertices, colour);
 }
@@ -118,7 +118,7 @@ circle_demo()
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     uint16_t r = (fast_rand() % 40);
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_circle(display, x0, y0, r, colour);
 }
 
@@ -128,7 +128,7 @@ fill_circle_demo()
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     uint16_t r = (fast_rand() % 40);
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_fill_circle(display, x0, y0, r, colour);
 }
 
@@ -139,7 +139,7 @@ ellipse_demo()
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     uint16_t a = (fast_rand() % 40) + 20;
     uint16_t b = (fast_rand() % 40) + 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_ellipse(display, x0, y0, a, b, colour);
 }
 
@@ -150,7 +150,7 @@ fill_ellipse_demo()
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     uint16_t a = (fast_rand() % 40) + 20;
     uint16_t b = (fast_rand() % 40) + 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_fill_ellipse(display, x0, y0, a, b, colour);
 }
 
@@ -161,7 +161,7 @@ line_demo()
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
     int16_t y1 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_line(display, x0, y0, x1, y1, colour);
 }
 
@@ -171,7 +171,7 @@ vline_demo()
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t w = (fast_rand() % display->width + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_vline(display, x0, y0, w, colour);
 }
 
@@ -182,7 +182,7 @@ hline_demo()
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t h = (fast_rand() % display->width + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_vline(display, x0, y0, h, colour);
 }
 
@@ -193,7 +193,7 @@ rectangle_demo()
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
     int16_t y1 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_rectangle(display, x0, y0, x1, y1, colour);
 }
 
@@ -204,7 +204,7 @@ fill_rectangle_demo()
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
     int16_t y1 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_fill_rectangle(display, x0, y0, x1, y1, colour);
 }
 
@@ -214,7 +214,7 @@ put_character_demo()
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
 
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     char ascii = fast_rand() % 127;
     hagl_put_char(display, ascii, x0, y0, colour, font6x9);
 }
@@ -224,7 +224,7 @@ scaled_character_demo()
 {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     char ascii = fast_rand() % 127;
 
     if (0 == hagl_get_glyph(display, ascii, colour, &glyph, font6x9)) {
@@ -238,7 +238,7 @@ put_text_demo()
     int16_t x0 = (fast_rand() % display->width + 20) - 80;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
 
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
 
     hagl_put_text(display, L"YO¡ MTV raps2♥", x0, y0, colour, font6x9);
 }
@@ -248,7 +248,7 @@ put_pixel_demo()
 {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_put_pixel(display, x0, y0, colour);
 }
 
@@ -261,7 +261,7 @@ triangle_demo()
     int16_t y1 = (fast_rand() % display->height + 20) - 20;
     int16_t x2 = (fast_rand() % display->width + 20) - 20;
     int16_t y2 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_triangle(display, x0, y0, x1, y1, x2, y2, colour);
 }
 
@@ -274,7 +274,7 @@ fill_triangle_demo()
     int16_t y1 = (fast_rand() % display->height + 20) - 20;
     int16_t x2 = (fast_rand() % display->width + 20) - 20;
     int16_t y2 = (fast_rand() % display->height + 20) - 20;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_fill_triangle(display, x0, y0, x1, y1, x2, y2, colour);
 }
 
@@ -302,7 +302,7 @@ round_rectangle_demo()
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
     int16_t y1 = (fast_rand() % display->height + 20) - 20;
     int16_t r = fast_rand() % 10;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_rounded_rectangle(display, x0, y0, x1, y1, r, colour);
 }
 
@@ -314,7 +314,7 @@ fill_round_rectangle_demo()
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
     int16_t y1 = (fast_rand() % display->height + 20) - 20;
     int16_t r = fast_rand() % 10;
-    color_t colour = fast_rand() % 0xffff;
+    hagl_color_t colour = fast_rand() % 0xffff;
     hagl_fill_rounded_rectangle(display, x0, y0, x1, y1, r, colour);
 }
 
@@ -352,9 +352,9 @@ main()
 
     display = hagl_init();
 
-    color_t red = hagl_color(display, 255, 0, 0);
-    color_t green = hagl_color(display, 0, 255, 0);
-    color_t blue = hagl_color(display, 0, 0, 255);
+    hagl_color_t red = hagl_color(display, 255, 0, 0);
+    hagl_color_t green = hagl_color(display, 0, 255, 0);
+    hagl_color_t blue = hagl_color(display, 0, 0, 255);
 
     hagl_bitmap_init(&glyph, 6, 9, display->depth, NULL);
     glyph.buffer = (uint8_t *) malloc(glyph.size);
