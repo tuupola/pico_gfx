@@ -57,8 +57,8 @@ static char primitive[20][32] = {
     "RGB BARS",
     "PIXELS",
     "LINES",
-    "VERTICAL LINES",
     "HORIZONTAL LINES",
+    "VERTICAL LINES",
     "CIRCLES",
     "FILLED CIRCLES",
     "ELLIPSES",
@@ -175,7 +175,6 @@ vline_demo()
     hagl_draw_vline(display, x0, y0, w, colour);
 }
 
-
 void
 hline_demo()
 {
@@ -183,7 +182,7 @@ hline_demo()
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t h = (fast_rand() % display->width + 20) - 20;
     hagl_color_t colour = fast_rand() % 0xffff;
-    hagl_draw_vline(display, x0, y0, h, colour);
+    hagl_draw_hline(display, x0, y0, h, colour);
 }
 
 void
@@ -373,8 +372,8 @@ main()
     demo[0] = rgb_demo;
     demo[1] = put_pixel_demo;
     demo[2] = line_demo;
-    demo[3] = vline_demo;
-    demo[4] = hline_demo;
+    demo[3] = hline_demo;
+    demo[4] = vline_demo;
     demo[5] = circle_demo;
     demo[6] = fill_circle_demo;
     demo[7] = ellipse_demo;
