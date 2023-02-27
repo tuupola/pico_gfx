@@ -68,4 +68,4 @@ Below testing was done with Waveshare [RP2040-LCD-0.96](https://www.waveshare.co
 
 ## License
 
-The MIT License (MIT). Please see [LICENSE](LICENSE) for more information.
+MIT No Attribution (MIT-0). Please see [LICENSE](LICENSE) for more information.
