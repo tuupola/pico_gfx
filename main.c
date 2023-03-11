@@ -426,7 +426,11 @@ main()
 
         if (switch_flag) {
             switch_flag = 0;
-            printf("[main] %d %s per second, display %d fps, %d free heap\r\n", (uint32_t)aps.current, primitive[current_demo], (uint32_t)fps.current,  free_heap());
+#ifdef HAGL_HAS_HAL_BACK_BUFFER
+            printf("[main] %d %s per second, %d fps, %d free heap\r\n", (uint32_t)aps.current, primitive[current_demo], (uint32_t)fps.current,  free_heap());
+#else
+            printf("[main] %d %s per second, %d free heap\r\n", (uint32_t)aps.current, primitive[current_demo], free_heap());
+#endif /* HAGL_HAS_HAL_BACK_BUFFER */
             current_demo = (current_demo + 1) % 20;
             aps_reset(&aps);
             drawn = 0;
