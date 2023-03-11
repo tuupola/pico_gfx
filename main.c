@@ -76,6 +76,22 @@ static char primitive[20][32] = {
     "SCALED CHARACTERS"
 };
 
+#include <malloc.h>
+
+size_t
+total_heap() {
+    extern char __StackLimit, __bss_end__;
+
+    return &__StackLimit  - &__bss_end__;
+}
+
+size_t
+free_heap(void) {
+    struct mallinfo m = mallinfo();
+
+    return total_heap() - m.uordblks;
+}
+
 void
 polygon_demo()
 {
@@ -174,7 +190,6 @@ vline_demo()
     hagl_color_t colour = fast_rand() % 0xffff;
     hagl_draw_vline(display, x0, y0, w, colour);
 }
-
 
 void
 hline_demo()
@@ -346,6 +361,9 @@ main()
     stdio_init_all();
     sleep_ms(5000);
 
+    printf("[main] %d total heap \r\n", total_heap());
+    printf("[main] %d free heap \r\n", free_heap());
+
     struct repeating_timer switch_timer;
     struct repeating_timer fps_timer;
     struct repeating_timer flush_timer;
@@ -358,8 +376,6 @@ main()
 
     hagl_bitmap_init(&glyph, 6, 9, display->depth, NULL);
     glyph.buffer = (uint8_t *) malloc(glyph.size);
-
-    printf("Hello world!\n");
 
     hagl_clear(display);
     hagl_set_clip(display, 0, 20, display->width - 1, display->height - 21);
@@ -394,6 +410,8 @@ main()
     fps_init(&fps);
     aps_init(&aps);
 
+    printf("[main] %d free heap \r\n", free_heap());
+
     while (1) {
         (*demo[current_demo])();
         drawn++;
@@ -408,7 +426,11 @@ main()
 
         if (switch_flag) {
             switch_flag = 0;
-            printf("%d %s per second, display %d FPS\r\n", (uint32_t)aps.current, primitive[current_demo], (uint32_t)fps.current);
+#ifdef HAGL_HAS_HAL_BACK_BUFFER
+            printf("[main] %d %s per second, %d fps, %d free heap\r\n", (uint32_t)aps.current, primitive[current_demo], (uint32_t)fps.current,  free_heap());
+#else
+            printf("[main] %d %s per second, %d free heap\r\n", (uint32_t)aps.current, primitive[current_demo], free_heap());
+#endif /* HAGL_HAS_HAL_BACK_BUFFER */
             current_demo = (current_demo + 1) % 20;
             aps_reset(&aps);
             drawn = 0;
