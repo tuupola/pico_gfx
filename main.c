@@ -183,7 +183,7 @@ hline_demo()
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t h = (fast_rand() % display->width + 20) - 20;
     hagl_color_t colour = fast_rand() % 0xffff;
-    hagl_draw_vline(display, x0, y0, h, colour);
+    hagl_draw_hline(display, x0, y0, h, colour);
 }
 
 void
