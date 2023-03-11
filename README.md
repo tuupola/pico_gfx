@@ -50,8 +50,8 @@ Below testing was done with Waveshare [RP2040-LCD-0.96](https://www.waveshare.co
 |-------------------------------|--------|-----------|------------|------------|
 | hagl_put_pixel()              | 117261 |    364294 |     364294 |     365326 |
 | hagl_draw_line()              |   2512 |     15655 |      17723 |      17794 |
-| hagl_draw_vline()             |  49632 |     72712 |      82412 |      82509 |
-| hagl_draw_hline()             |  49626 |     72637 |      82305 |      82497 |
+| hagl_draw_vline()             |  50178 |     72712 |      82412 |      82509 |
+| hagl_draw_hline()             |  63583 |     72637 |      82305 |      82497 |
 | hagl_draw_circle()            |   1912 |     13519 |      15345 |      15371 |
 | hagl_fill_circle()            |   1420 |      8571 |       9701 |       9744 |
 | hagl_draw_ellipse()           |   1273 |      7565 |       8543 |       8563 |
