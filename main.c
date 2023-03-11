@@ -41,7 +41,7 @@ SPDX-License-Identifier: MIT-0
 
 #include "xoroshiro64star.h"
 
-static uint8_t current_demo = 1;
+static uint8_t current_demo = 20;
 volatile bool fps_flag = false;
 volatile bool switch_flag = false;
 volatile bool flush_flag = true;
@@ -53,7 +53,7 @@ static hagl_bitmap_t glyph;
 
 wchar_t message[32];
 
-static char primitive[20][32] = {
+static char primitive[21][32] = {
     "RGB BARS",
     "PIXELS",
     "LINES",
@@ -74,6 +74,7 @@ static char primitive[20][32] = {
     "CHARACTERS",
     "STRINGS",
     "SCALED CHARACTERS"
+    "GRID TEST"
 };
 
 #include <malloc.h>
@@ -90,6 +91,31 @@ free_heap(void) {
     struct mallinfo m = mallinfo();
 
     return total_heap() - m.uordblks;
+}
+
+void
+grid_test()
+{
+    uint16_t red = hagl_color(display, 255, 0, 0);
+    uint16_t green = hagl_color(display, 0, 255, 0);
+    uint16_t blue = hagl_color(display, 0, 0, 255);
+
+    hagl_set_clip(display, 0, 0, display->width - 1, display->height - 1);
+    hagl_draw_rectangle(display, 0, 0, display->width - 1, display->height - 1, red);
+    hagl_draw_hline(display, 0, 0, display->width - 1, green);
+    hagl_draw_hline(display, 0, display->height - 1, display->width - 1, green);
+    hagl_draw_vline(display, 0, 0, display->height - 1, green);
+    hagl_draw_vline(display, display->width - 1, 0, display->height - 1, green);
+
+    for (int16_t x = 16; x < display->width; x += 16) {
+        hagl_draw_vline(display, x, 0, display->height - 1, red);
+    }
+
+    for (int16_t y = 16; y < display->height; y += 16) {
+        hagl_draw_hline(display, 0, y, display->width - 1, red);
+    }
+
+    sleep_ms(1000);
 }
 
 void
@@ -384,7 +410,7 @@ main()
     add_repeating_timer_ms(1000, fps_timer_callback, NULL, &fps_timer);
     add_repeating_timer_ms(33, flush_timer_callback, NULL, &flush_timer);
 
-    void (*demo[20]) ();
+    void (*demo[21]) ();
 
     demo[0] = rgb_demo;
     demo[1] = put_pixel_demo;
@@ -406,6 +432,7 @@ main()
     demo[17] = put_character_demo;
     demo[18] = put_text_demo;
     demo[19] = scaled_character_demo;
+    demo[20] = grid_test;
 
     fps_init(&fps);
     aps_init(&aps);
@@ -431,12 +458,13 @@ main()
 #else
             printf("[main] %d %s per second, %d free heap\r\n", (uint32_t)aps.current, primitive[current_demo], free_heap());
 #endif /* HAGL_HAS_HAL_BACK_BUFFER */
+            hagl_clear(display);
             current_demo = (current_demo + 1) % 20;
             aps_reset(&aps);
             drawn = 0;
         }
 
-        if (fps_flag) {
+        if (fps_flag && current_demo != 20) {
             fps_flag = 0;
 
             aps_update(&aps, drawn);
