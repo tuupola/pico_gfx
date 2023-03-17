@@ -73,7 +73,7 @@ static char primitive[21][32] = {
     "FILLED POLYGONS",
     "CHARACTERS",
     "STRINGS",
-    "SCALED CHARACTERS"
+    "SCALED CHARACTERS",
     "GRID TEST"
 };
 
@@ -460,6 +460,7 @@ main()
 #endif /* HAGL_HAS_HAL_BACK_BUFFER */
             hagl_clear(display);
             current_demo = (current_demo + 1) % 20;
+            fps_reset(&fps);
             aps_reset(&aps);
             drawn = 0;
         }
