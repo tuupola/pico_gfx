@@ -44,27 +44,27 @@ $ picotool load firmware.uf2 -f
 
 ## Speed
 
-Below testing was done with Waveshare [RP2040-LCD-0.96](https://www.waveshare.com/wiki/RP2040-LCD-0.96). Buffered refresh rate was set to 30 frames per second. Number represents operations per seconsd ie. bigger number is better.
+Below testing was done with Waveshare [RP2040-GEEK (240x135 ST7789VW)](https://www.waveshare.com/wiki/RP2040-GEEK). Buffered refresh rate was set to 30 frames per second. Number represents operations per seconds ie. bigger number is better.
 
 |                               | Single | Double    | Double DMA | Triple DMA |
 |-------------------------------|--------|-----------|------------|------------|
-| hagl_put_pixel()              | 117261 |    364294 |     364294 |     365326 |
-| hagl_draw_line()              |   2512 |     15655 |      17723 |      17794 |
-| hagl_draw_vline()             |  50178 |     72712 |      82412 |      82509 |
-| hagl_draw_hline()             |  63583 |     72637 |      82305 |      82497 |
-| hagl_draw_circle()            |   1912 |     13519 |      15345 |      15371 |
-| hagl_fill_circle()            |   1420 |      8571 |       9701 |       9744 |
-| hagl_draw_ellipse()           |   1273 |      7565 |       8543 |       8563 |
-| hagl_fill_ellipse()           |    596 |      3666 |       4153 |       4167 |
-| hagl_draw_triangle()          |    852 |      5348 |       6045 |       6080 |
-| hagl_fill_triangle()          |    501 |       699 |        806 |        806 |
-| hagl_draw_rectangle()         |  12517 |     22244 |      25103 |      25244 |
-| hagl_fill_rectangle()         |   1319 |      9406 |      10699 |      10712 |
-| hagl_draw_rounded_rectangle() |   4401 |     16984 |      19214 |      19288 |
-| hagl_fill_rounded_rectangle() |   1186 |      8223 |       9307 |       9347 |
-| hagl_draw_polygon()           |    507 |      3235 |       3661 |       3678 |
-| hagl_fill_polygon()           |    302 |       421 |        476 |        486 |
-| hagl_put_char()               |   4658 |     25170 |      28534 |      28443 |
+| hagl_put_pixel()              | 164414 |    264121 |     376766 |     376792 |
+| hagl_draw_line()              |   2147 |      9530 |      13581 |      13592 |
+| hagl_draw_vline()             |  46901 |     46872 |      66677 |      66787 |
+| hagl_draw_hline()             |  40187 |    124997 |     178087 |     178208 |
+| hagl_draw_circle()            |   2183 |     10943 |      15636 |      15603 |
+| hagl_fill_circle()            |   1481 |      6690 |       9463 |       9496 |
+| hagl_draw_ellipse()           |   1319 |      6037 |       8586 |       8595 |
+| hagl_fill_ellipse()           |    627 |      2920 |       4169 |       4137 |
+| hagl_draw_triangle()          |    711 |      3246 |       4617 |       4625 |
+| hagl_fill_triangle()          |    466 |       631 |        890 |        892 |
+| hagl_draw_rectangle()         |  11811 |     20342 |      28965 |      29011 |
+| hagl_fill_rectangle()         |    854 |      4806 |       6901 |       6916 |
+| hagl_draw_rounded_rectangle() |   5307 |     15175 |      21629 |      21625 |
+| hagl_fill_rounded_rectangle() |    771 |      4227 |       6026 |       6063 |
+| hagl_draw_polygon()           |    428 |      1964 |       2792 |       2788 |
+| hagl_fill_polygon()           |    283 |       367 |        527 |        528 |
+| hagl_put_char()               |   5445 |     20946 |      29861 |      29870 |
 
 ## License
 
