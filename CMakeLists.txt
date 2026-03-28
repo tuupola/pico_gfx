@@ -46,11 +46,22 @@ target_compile_definitions(firmware PRIVATE
 #
 
 #include("external/hagl_hal/cmake/pimoroni-pico-display-pack.cmake")
+#include("external/hagl_hal/cmake/pimoroni-pico-display-pack-20.cmake")
 #include("external/hagl_hal/cmake/pimoroni-picosystem.cmake")
 #include("external/hagl_hal/cmake/waveshare-pico-lcd-096.cmake")
+#include("external/hagl_hal/cmake/waveshare-pico-lcd-114.cmake")
 #include("external/hagl_hal/cmake/waveshare-pico-lcd-130.cmake")
 #include("external/hagl_hal/cmake/waveshare-pico-lcd-144.cmake")
-include("external/hagl_hal/cmake/waveshare-rp2040-lcd-096.cmake")
+#include("external/hagl_hal/cmake/waveshare-pico-lcd-18.cmake")
+#include("external/hagl_hal/cmake/waveshare-pico-lcd-2.cmake")
+#include("external/hagl_hal/cmake/waveshare-pico-restouch-lcd-28.cmake")
+#include("external/hagl_hal/cmake/waveshare-rp2040-lcd-096.cmake")
+include("external/hagl_hal/cmake/waveshare-rp2040-geek.cmake")
+#include("external/hagl_hal/cmake/waveshare-rp2040-lcd-128.cmake")
+#include("external/hagl_hal/cmake/generic-ili9163-128x128.cmake")
+#include("external/hagl_hal/cmake/generic-ili9341-320x240.cmake")
+#include("external/hagl_hal/cmake/generic-st7735-128x128.cmake")
+#include("external/hagl_hal/cmake/lilygo-t-display-rp2040.cmake")
 
 #
 # For other boards you can set the config manually here.
