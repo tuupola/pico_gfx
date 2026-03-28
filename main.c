@@ -102,17 +102,20 @@ grid_test()
 
     hagl_set_clip(display, 0, 0, display->width - 1, display->height - 1);
     hagl_draw_rectangle(display, 0, 0, display->width - 1, display->height - 1, red);
-    hagl_draw_hline(display, 0, 0, display->width - 1, green);
-    hagl_draw_hline(display, 0, display->height - 1, display->width - 1, green);
-    hagl_draw_vline(display, 0, 0, display->height - 1, green);
-    hagl_draw_vline(display, display->width - 1, 0, display->height - 1, green);
+
+    //sleep_ms(500);
+
+    hagl_draw_hline(display, 0, 0, display->width, green);
+    hagl_draw_hline(display, 0, display->height - 1, display->width, green);
+    hagl_draw_vline(display, 0, 0, display->height, green);
+    hagl_draw_vline(display, display->width - 1, 0, display->height, green);
 
     for (int16_t x = 16; x < display->width; x += 16) {
-        hagl_draw_vline(display, x, 0, display->height - 1, red);
+        hagl_draw_vline(display, x, 0, display->height, red);
     }
 
     for (int16_t y = 16; y < display->height; y += 16) {
-        hagl_draw_hline(display, 0, y, display->width - 1, red);
+        hagl_draw_hline(display, 0, y, display->width, red);
     }
 
     sleep_ms(1000);
