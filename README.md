@@ -9,8 +9,8 @@ Below instructions assume you do not have [Raspberry Pi Pico SDK](https://github
 
 ```
 $ git clone --recursive https://github.com/raspberrypi/pico-sdk.git
-$ git clone --recursive https://github.com/tuupola/pico_gfx.git
-$ cd pico_gfx/build
+$ git clone --recursive https://github.com/tuupola/pico_gfx.git
+$ cd pico_gfx/build
 $ cmake ..
 $ make -j8
 ```
@@ -18,8 +18,8 @@ $ make -j8
 If the SDK is already installed you can pass the installation path manually.
 
 ```
-$ git clone --recursive https://github.com/tuupola/pico_gfx.git
-$ cd pico_gfx/build
+$ git clone --recursive https://github.com/tuupola/pico_gfx.git
+$ cd pico_gfx/build
 $ cmake .. -DPICO_SDK_PATH=../pico-sdk
 $ make -j8
 ```
@@ -48,23 +48,23 @@ Below testing was done with Waveshare [RP2040-GEEK (240x135 ST7789VW)](https://w
 
 |                               | Single | Double    | Double DMA | Triple DMA |
 |-------------------------------|--------|-----------|------------|------------|
-| hagl_put_pixel()              | 164414 |    264121 |     376766 |     376792 |
-| hagl_draw_line()              |   2147 |      9530 |      13581 |      13592 |
-| hagl_draw_vline()             |  46901 |     46872 |      66677 |      66787 |
-| hagl_draw_hline()             |  40187 |    124997 |     178087 |     178208 |
-| hagl_draw_circle()            |   2183 |     10943 |      15636 |      15603 |
-| hagl_fill_circle()            |   1481 |      6690 |       9463 |       9496 |
-| hagl_draw_ellipse()           |   1319 |      6037 |       8586 |       8595 |
-| hagl_fill_ellipse()           |    627 |      2920 |       4169 |       4137 |
-| hagl_draw_triangle()          |    711 |      3246 |       4617 |       4625 |
-| hagl_fill_triangle()          |    466 |       631 |        890 |        892 |
-| hagl_draw_rectangle()         |  11811 |     20342 |      28965 |      29011 |
-| hagl_fill_rectangle()         |    854 |      4806 |       6901 |       6916 |
-| hagl_draw_rounded_rectangle() |   5307 |     15175 |      21629 |      21625 |
-| hagl_fill_rounded_rectangle() |    771 |      4227 |       6026 |       6063 |
-| hagl_draw_polygon()           |    428 |      1964 |       2792 |       2788 |
-| hagl_fill_polygon()           |    283 |       367 |        527 |        528 |
-| hagl_put_char()               |   5445 |     20946 |      29861 |      29870 |
+| hagl_put_pixel()              | 185298 |    332931 |     474968 |     474985 |
+| hagl_draw_line()              |   5058 |     21171 |      30235 |      30257 |
+| hagl_draw_vline()             |  62700 |     71762 |     102313 |     102313 |
+| hagl_draw_hline()             |  67611 |    204532 |     291288 |     291295 |
+| hagl_draw_circle()            |   1281 |      6200 |       8839 |       8841 |
+| hagl_fill_circle()            |    614 |      2977 |       4248 |       4246 |
+| hagl_draw_ellipse()           |   1446 |      6861 |       9779 |       9779 |
+| hagl_fill_ellipse()           |    725 |      3360 |       4792 |       4794 |
+| hagl_draw_triangle()          |   2379 |      9958 |      14180 |      14176 |
+| hagl_fill_triangle()          |   1112 |      1105 |       1576 |       1576 |
+| hagl_draw_rectangle()         |  20446 |     38846 |      55441 |      55443 |
+| hagl_fill_rectangle()         |   2834 |     15089 |      21489 |      21491 |
+| hagl_draw_rounded_rectangle() |   4374 |     19375 |      27558 |      27562 |
+| hagl_fill_rounded_rectangle() |   2276 |     10892 |      15510 |      15508 |
+| hagl_draw_polygon()           |   1938 |      7848 |      11245 |      11250 |
+| hagl_fill_polygon()           |    834 |       865 |       1234 |       1234 |
+| hagl_put_char()               |   5702 |     21454 |      30609 |      30612 |
 
 ## License
 
