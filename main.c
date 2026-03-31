@@ -89,9 +89,9 @@ void polygon_demo() {
     int16_t y3 = y0 + 50;
     int16_t x4 = x0;
     int16_t y4 = y0 + 40;
-    hagl_color_t colour = color++;
+    
     int16_t vertices[10] = {x0, y0, x1, y1, x2, y2, x3, y3, x4, y4};
-    hagl_draw_polygon(display, 5, vertices, colour);
+    hagl_draw_polygon(display, 5, vertices, color++);
 }
 
 void fill_polygon_demo() {
@@ -105,25 +105,25 @@ void fill_polygon_demo() {
     int16_t y3 = y0 + 50;
     int16_t x4 = x0;
     int16_t y4 = y0 + 40;
-    hagl_color_t colour = color++;
+    
     int16_t vertices[10] = {x0, y0, x1, y1, x2, y2, x3, y3, x4, y4};
-    hagl_fill_polygon(display, 5, vertices, colour);
+    hagl_fill_polygon(display, 5, vertices, color++);
 }
 
 void circle_demo() {
     int16_t x0 = fast_rand() % display->width;
     int16_t y0 = fast_rand() % display->height;
     uint16_t r = 40;
-    hagl_color_t colour = color++;
-    hagl_draw_circle(display, x0, y0, r, colour);
+    
+    hagl_draw_circle(display, x0, y0, r, color++);
 }
 
 void fill_circle_demo() {
     int16_t x0 = fast_rand() % display->width;
     int16_t y0 = fast_rand() % display->height;
     uint16_t r = 40;
-    hagl_color_t colour = color++;
-    hagl_fill_circle(display, x0, y0, r, colour);
+    
+    hagl_fill_circle(display, x0, y0, r, color++);
 }
 
 void ellipse_demo() {
@@ -131,8 +131,8 @@ void ellipse_demo() {
     int16_t y0 = fast_rand() % display->height;
     uint16_t a = 40;
     uint16_t b = 30;
-    hagl_color_t colour = color++;
-    hagl_draw_ellipse(display, x0, y0, a, b, colour);
+    
+    hagl_draw_ellipse(display, x0, y0, a, b, color++);
 }
 
 void fill_ellipse_demo() {
@@ -140,8 +140,8 @@ void fill_ellipse_demo() {
     int16_t y0 = fast_rand() % display->height;
     uint16_t a = 40;
     uint16_t b = 30;
-    hagl_color_t colour = color++;
-    hagl_fill_ellipse(display, x0, y0, a, b, colour);
+    
+    hagl_fill_ellipse(display, x0, y0, a, b, color++);
 }
 
 void line_demo() {
@@ -151,24 +151,24 @@ void line_demo() {
     int16_t dy = (fast_rand() & 1) ? 28 : -28;
     int16_t x1 = x0 + dx;
     int16_t y1 = y0 + dy;
-    hagl_color_t colour = color++;
-    hagl_draw_line(display, x0, y0, x1, y1, colour);
+    
+    hagl_draw_line(display, x0, y0, x1, y1, color++);
 }
 
 void vline_demo() {
     int16_t x0 = fast_rand() % display->width;
     int16_t y0 = fast_rand() % display->height;
     int16_t w = 40;
-    hagl_color_t colour = color++;
-    hagl_draw_vline(display, x0, y0, w, colour);
+    
+    hagl_draw_vline(display, x0, y0, w, color++);
 }
 
 void hline_demo() {
     int16_t x0 = fast_rand() % display->width;
     int16_t y0 = fast_rand() % display->height;
     int16_t h = 40;
-    hagl_color_t colour = color++;
-    hagl_draw_hline(display, x0, y0, h, colour);
+    
+    hagl_draw_hline(display, x0, y0, h, color++);
 }
 
 void rectangle_demo() {
@@ -176,8 +176,8 @@ void rectangle_demo() {
     int16_t y0 = fast_rand() % display->height;
     int16_t x1 = x0 + 40;
     int16_t y1 = y0 + 30;
-    hagl_color_t colour = color++;
-    hagl_draw_rectangle(display, x0, y0, x1, y1, colour);
+    
+    hagl_draw_rectangle(display, x0, y0, x1, y1, color++);
 }
 
 void fill_rectangle_demo() {
@@ -185,26 +185,25 @@ void fill_rectangle_demo() {
     int16_t y0 = fast_rand() % display->height;
     int16_t x1 = x0 + 40;
     int16_t y1 = y0 + 30;
-    hagl_color_t colour = color++;
-    hagl_fill_rectangle(display, x0, y0, x1, y1, colour);
+    
+    hagl_fill_rectangle(display, x0, y0, x1, y1, color++);
 }
 
 void put_character_demo() {
     int16_t x0 = fast_rand() % display->width;
     int16_t y0 = fast_rand() % display->height;
 
-    hagl_color_t colour = color++;
     char ascii = fast_rand() & 0x7E;
-    hagl_put_char(display, ascii, x0, y0, colour, font6x9);
+    hagl_put_char(display, ascii, x0, y0, color++, font6x9);
 }
 
 void scaled_character_demo() {
     int16_t x0 = fast_rand() % display->width;
     int16_t y0 = fast_rand() % display->height;
-    hagl_color_t colour = color++;
+
     char ascii = fast_rand() & 0x7E; /* 0-126 */
 
-    if (0 == hagl_get_glyph(display, ascii, colour, &glyph, font6x9)) {
+    if (0 == hagl_get_glyph(display, ascii, color++, &glyph, font6x9)) {
         hagl_blit_xywh(display, x0, y0, 24, 36, &glyph);
     }
 }
@@ -213,16 +212,14 @@ void put_text_demo() {
     int16_t x0 = fast_rand() % display->width;
     int16_t y0 = fast_rand() % display->height;
 
-    hagl_color_t colour = color++;
-
-    hagl_put_text(display, L"YO¡ MTV raps2♥", x0, y0, colour, font6x9);
+    hagl_put_text(display, L"YO¡ MTV raps2♥", x0, y0, color++, font6x9);
 }
 
 void put_pixel_demo() {
     int16_t x0 = fast_rand() % display->width;
     int16_t y0 = fast_rand() % display->height;
-    hagl_color_t colour = color++;
-    hagl_put_pixel(display, x0, y0, colour);
+    
+    hagl_put_pixel(display, x0, y0, color++);
 }
 
 void triangle_demo() {
@@ -232,8 +229,8 @@ void triangle_demo() {
     int16_t y1 = y0;
     int16_t x2 = x0 + 15;
     int16_t y2 = y0 + 40;
-    hagl_color_t colour = color++;
-    hagl_draw_triangle(display, x0, y0, x1, y1, x2, y2, colour);
+    
+    hagl_draw_triangle(display, x0, y0, x1, y1, x2, y2, color++);
 }
 
 void fill_triangle_demo() {
@@ -243,8 +240,8 @@ void fill_triangle_demo() {
     int16_t y1 = y0;
     int16_t x2 = x0 + 15;
     int16_t y2 = y0 + 40;
-    hagl_color_t colour = color++;
-    hagl_fill_triangle(display, x0, y0, x1, y1, x2, y2, colour);
+    
+    hagl_fill_triangle(display, x0, y0, x1, y1, x2, y2, color++);
 }
 
 void rgb_demo() {
@@ -267,8 +264,8 @@ void round_rectangle_demo() {
     int16_t x1 = x0 + 40;
     int16_t y1 = y0 + 30;
     int16_t r = 10;
-    hagl_color_t colour = color++;
-    hagl_draw_rounded_rectangle(display, x0, y0, x1, y1, r, colour);
+    
+    hagl_draw_rounded_rectangle(display, x0, y0, x1, y1, r, color++);
 }
 
 void fill_round_rectangle_demo() {
@@ -277,8 +274,8 @@ void fill_round_rectangle_demo() {
     int16_t x1 = x0 + 40;
     int16_t y1 = y0 + 30;
     int16_t r = 10;
-    hagl_color_t colour = color++;
-    hagl_fill_rounded_rectangle(display, x0, y0, x1, y1, r, colour);
+    
+    hagl_fill_rounded_rectangle(display, x0, y0, x1, y1, r, color++);
 }
 
 bool switch_timer_callback(struct repeating_timer *t) {
