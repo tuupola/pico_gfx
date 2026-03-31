@@ -25,19 +25,19 @@ SPDX-License-Identifier: MIT-0
 
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <wchar.h>
 #include <pico/stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <wchar.h>
 
 #include <sys/time.h>
 
-#include <hagl_hal.h>
-#include <hagl/bitmap.h>
-#include <hagl.h>
+#include <aps.h>
 #include <font6x9.h>
 #include <fps.h>
-#include <aps.h>
+#include <hagl.h>
+#include <hagl/bitmap.h>
+#include <hagl_hal.h>
 
 #include "xoroshiro64star.h"
 
@@ -54,47 +54,30 @@ static hagl_bitmap_t glyph;
 wchar_t message[32];
 
 static char primitive[20][32] = {
-    "RGB BARS",
-    "PIXELS",
-    "LINES",
-    "VERTICAL LINES",
-    "HORIZONTAL LINES",
-    "CIRCLES",
-    "FILLED CIRCLES",
-    "ELLIPSES",
-    "FILLED ELLIPSES",
-    "TRIANGLES",
-    "FILLED TRIANGLES",
-    "RECTANGLES",
-    "FILLED RECTANGLES",
-    "ROUND RECTANGLES",
-    "FILLED ROUND RECTANGLES",
-    "POLYGONS",
-    "FILLED POLYGONS",
-    "CHARACTERS",
-    "STRINGS",
-    "SCALED CHARACTERS"
+    "RGB BARS",          "PIXELS",           "LINES",
+    "VERTICAL LINES",    "HORIZONTAL LINES", "CIRCLES",
+    "FILLED CIRCLES",    "ELLIPSES",         "FILLED ELLIPSES",
+    "TRIANGLES",         "FILLED TRIANGLES", "RECTANGLES",
+    "FILLED RECTANGLES", "ROUND RECTANGLES", "FILLED ROUND RECTANGLES",
+    "POLYGONS",          "FILLED POLYGONS",  "CHARACTERS",
+    "STRINGS",           "SCALED CHARACTERS"
 };
 
 #include <malloc.h>
 
-size_t
-total_heap() {
+size_t total_heap() {
     extern char __StackLimit, __bss_end__;
 
-    return &__StackLimit  - &__bss_end__;
+    return &__StackLimit - &__bss_end__;
 }
 
-size_t
-free_heap(void) {
+size_t free_heap(void) {
     struct mallinfo m = mallinfo();
 
     return total_heap() - m.uordblks;
 }
 
-void
-polygon_demo()
-{
+void polygon_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -110,9 +93,7 @@ polygon_demo()
     hagl_draw_polygon(display, 5, vertices, colour);
 }
 
-void
-fill_polygon_demo()
-{
+void fill_polygon_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -128,9 +109,7 @@ fill_polygon_demo()
     hagl_fill_polygon(display, 5, vertices, colour);
 }
 
-void
-circle_demo()
-{
+void circle_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     uint16_t r = (fast_rand() % 40);
@@ -138,9 +117,7 @@ circle_demo()
     hagl_draw_circle(display, x0, y0, r, colour);
 }
 
-void
-fill_circle_demo()
-{
+void fill_circle_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     uint16_t r = (fast_rand() % 40);
@@ -148,9 +125,7 @@ fill_circle_demo()
     hagl_fill_circle(display, x0, y0, r, colour);
 }
 
-void
-ellipse_demo()
-{
+void ellipse_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     uint16_t a = (fast_rand() % 40) + 20;
@@ -159,9 +134,7 @@ ellipse_demo()
     hagl_draw_ellipse(display, x0, y0, a, b, colour);
 }
 
-void
-fill_ellipse_demo()
-{
+void fill_ellipse_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     uint16_t a = (fast_rand() % 40) + 20;
@@ -170,9 +143,7 @@ fill_ellipse_demo()
     hagl_fill_ellipse(display, x0, y0, a, b, colour);
 }
 
-void
-line_demo()
-{
+void line_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -181,9 +152,7 @@ line_demo()
     hagl_draw_line(display, x0, y0, x1, y1, colour);
 }
 
-void
-vline_demo()
-{
+void vline_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t w = (fast_rand() % display->width + 20) - 20;
@@ -191,9 +160,7 @@ vline_demo()
     hagl_draw_vline(display, x0, y0, w, colour);
 }
 
-void
-hline_demo()
-{
+void hline_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t h = (fast_rand() % display->width + 20) - 20;
@@ -201,9 +168,7 @@ hline_demo()
     hagl_draw_hline(display, x0, y0, h, colour);
 }
 
-void
-rectangle_demo()
-{
+void rectangle_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -212,9 +177,7 @@ rectangle_demo()
     hagl_draw_rectangle(display, x0, y0, x1, y1, colour);
 }
 
-void
-fill_rectangle_demo()
-{
+void fill_rectangle_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -223,9 +186,7 @@ fill_rectangle_demo()
     hagl_fill_rectangle(display, x0, y0, x1, y1, colour);
 }
 
-void
-put_character_demo()
-{
+void put_character_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
 
@@ -234,9 +195,7 @@ put_character_demo()
     hagl_put_char(display, ascii, x0, y0, colour, font6x9);
 }
 
-void
-scaled_character_demo()
-{
+void scaled_character_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     hagl_color_t colour = fast_rand() % 0xffff;
@@ -247,9 +206,7 @@ scaled_character_demo()
     }
 }
 
-void
-put_text_demo()
-{
+void put_text_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 80;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
 
@@ -258,18 +215,14 @@ put_text_demo()
     hagl_put_text(display, L"YO¡ MTV raps2♥", x0, y0, colour, font6x9);
 }
 
-void
-put_pixel_demo()
-{
+void put_pixel_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     hagl_color_t colour = fast_rand() % 0xffff;
     hagl_put_pixel(display, x0, y0, colour);
 }
 
-void
-triangle_demo()
-{
+void triangle_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -280,9 +233,7 @@ triangle_demo()
     hagl_draw_triangle(display, x0, y0, x1, y1, x2, y2, colour);
 }
 
-void
-fill_triangle_demo()
-{
+void fill_triangle_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -293,9 +244,7 @@ fill_triangle_demo()
     hagl_fill_triangle(display, x0, y0, x1, y1, x2, y2, colour);
 }
 
-void
-rgb_demo()
-{
+void rgb_demo() {
     uint16_t red = hagl_color(display, 255, 0, 0);
     uint16_t green = hagl_color(display, 0, 255, 0);
     uint16_t blue = hagl_color(display, 0, 0, 255);
@@ -309,9 +258,7 @@ rgb_demo()
     hagl_fill_rectangle(display, x2, 0, display->width, display->height, blue);
 }
 
-void
-round_rectangle_demo()
-{
+void round_rectangle_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -321,9 +268,7 @@ round_rectangle_demo()
     hagl_draw_rounded_rectangle(display, x0, y0, x1, y1, r, colour);
 }
 
-void
-fill_round_rectangle_demo()
-{
+void fill_round_rectangle_demo() {
     int16_t x0 = (fast_rand() % display->width + 20) - 20;
     int16_t y0 = (fast_rand() % display->height + 20) - 20;
     int16_t x1 = (fast_rand() % display->width + 20) - 20;
@@ -333,31 +278,22 @@ fill_round_rectangle_demo()
     hagl_fill_rounded_rectangle(display, x0, y0, x1, y1, r, colour);
 }
 
-bool
-switch_timer_callback(struct repeating_timer *t)
-{
+bool switch_timer_callback(struct repeating_timer *t) {
     switch_flag = true;
     return true;
 }
 
-bool
-fps_timer_callback(struct repeating_timer *t)
-{
+bool fps_timer_callback(struct repeating_timer *t) {
     fps_flag = true;
     return true;
 }
 
-bool
-flush_timer_callback(struct repeating_timer *t)
-{
+bool flush_timer_callback(struct repeating_timer *t) {
     flush_flag = true;
     return true;
 }
 
-
-int
-main()
-{
+int main() {
     stdio_init_all();
     sleep_ms(5000);
 
@@ -375,7 +311,7 @@ main()
     hagl_color_t blue = hagl_color(display, 0, 0, 255);
 
     hagl_bitmap_init(&glyph, 6, 9, display->depth, NULL);
-    glyph.buffer = (uint8_t *) malloc(glyph.size);
+    glyph.buffer = (uint8_t *)malloc(glyph.size);
 
     hagl_clear(display);
     hagl_set_clip(display, 0, 20, display->width - 1, display->height - 21);
@@ -384,7 +320,7 @@ main()
     add_repeating_timer_ms(1000, fps_timer_callback, NULL, &fps_timer);
     add_repeating_timer_ms(33, flush_timer_callback, NULL, &flush_timer);
 
-    void (*demo[20]) ();
+    void (*demo[20])();
 
     demo[0] = rgb_demo;
     demo[1] = put_pixel_demo;
@@ -427,9 +363,20 @@ main()
         if (switch_flag) {
             switch_flag = 0;
 #ifdef HAGL_HAS_HAL_BACK_BUFFER
-            printf("[main] %d %s per second, %d fps, %d free heap\r\n", (uint32_t)aps.current, primitive[current_demo], (uint32_t)fps.current,  free_heap());
+            printf(
+                "[main] %d %s per second, %d fps, %d free heap\r\n",
+                (uint32_t)aps.current,
+                primitive[current_demo],
+                (uint32_t)fps.current,
+                free_heap()
+            );
 #else
-            printf("[main] %d %s per second, %d free heap\r\n", (uint32_t)aps.current, primitive[current_demo], free_heap());
+            printf(
+                "[main] %d %s per second, %d free heap\r\n",
+                (uint32_t)aps.current,
+                primitive[current_demo],
+                free_heap()
+            );
 #endif /* HAGL_HAS_HAL_BACK_BUFFER */
             current_demo = (current_demo + 1) % 20;
             aps_reset(&aps);
@@ -445,13 +392,20 @@ main()
             hagl_set_clip(display, 0, 0, display->width - 1, display->height - 1);
 
             /* Print the message on upper left corner. */
-            swprintf(message,  sizeof(message), L"%.*f APS       ", 0, aps.current);
+            swprintf(message, sizeof(message), L"%.*f APS       ", 0, aps.current);
             hagl_put_text(display, message, 8, 4, green, font6x9);
 
 #ifdef HAGL_HAS_HAL_BACK_BUFFER
             /* Print the message on lower right corner. */
             swprintf(message, sizeof(message), L"%.*f FPS  ", 0, fps.current);
-            hagl_put_text(display, message, display->width - 40, display->height - 14, green, font6x9);
+            hagl_put_text(
+                display,
+                message,
+                display->width - 40,
+                display->height - 14,
+                green,
+                font6x9
+            );
 #endif /* HAGL_HAS_HAL_BACK_BUFFER */
 
             hagl_set_clip(display, 0, 20, display->width - 1, display->height - 21);
