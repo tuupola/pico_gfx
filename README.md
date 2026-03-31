@@ -18,8 +18,8 @@ $ make -j8
 If the SDK is already installed you can pass the installation path manually.
 
 ```
-$ git clone --recursive https://github.com/tuupola/pico_gfx.git
-$ cd pico_gfx/build
+$ git clone --recursive https://github.com/tuupola/pico_gfx.git
+$ cd pico_gfx/build
 $ cmake .. -DPICO_SDK_PATH=../pico-sdk
 $ make -j8
 ```
