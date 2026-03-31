@@ -317,7 +317,7 @@ int main() {
     glyph.buffer = (uint8_t *)malloc(glyph.size);
 
     hagl_clear(display);
-    hagl_set_clip(display, 10, 20, display->width - 11, display->height - 21);
+    hagl_set_clip(display, 5, 20, display->width - 6, display->height - 21);
 
     add_repeating_timer_ms(10000, switch_timer_callback, NULL, &switch_timer);
     add_repeating_timer_ms(1000, fps_timer_callback, NULL, &fps_timer);
@@ -411,7 +411,7 @@ int main() {
             );
 #endif /* HAGL_HAS_HAL_BACK_BUFFER */
 
-            hagl_set_clip(display, 10, 20, display->width - 11, display->height - 21);
+            hagl_set_clip(display, 5, 20, display->width - 6, display->height - 21);
         }
     }
 
