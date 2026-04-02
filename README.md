@@ -53,7 +53,7 @@ Below testing was done with Waveshare [RP2040-GEEK (240x135 ST7789VW)](https://w
 | hagl_draw_vline()             |  62700 |     71762 |     102313 |     102313 |
 | hagl_draw_hline()             |  67611 |    204532 |     291288 |     291295 |
 | hagl_draw_circle()            |   1281 |      6200 |       8839 |       8841 |
-| hagl_fill_circle()            |    614 |      2977 |       4248 |       4246 |
+| hagl_fill_circle()            |    751 |      3622 |       5164 |       5164 |
 | hagl_draw_ellipse()           |   1446 |      6861 |       9779 |       9779 |
 | hagl_fill_ellipse()           |    725 |      3360 |       4792 |       4794 |
 | hagl_draw_triangle()          |   2379 |      9958 |      14180 |      14176 |
