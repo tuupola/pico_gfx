@@ -2,7 +2,6 @@
 
 ![Circles](https://appelsiini.net/img/2020/pod-draw-circle.png)
 
-
 ## Compile
 
 Below instructions assume you do not have [Raspberry Pi Pico SDK](https://github.com/raspberrypi/pico-sdk) installed yet.
@@ -46,25 +45,26 @@ $ picotool load firmware.uf2 -f
 
 Below testing was done with Waveshare [RP2040-GEEK (240x135 ST7789VW)](https://www.waveshare.com/wiki/RP2040-GEEK). Buffered refresh rate was set to 30 frames per second. Number represents operations per seconds ie. bigger number is better.
 
-|                               | Single | Double    | Double DMA | Triple DMA |
-|-------------------------------|--------|-----------|------------|------------|
-| hagl_put_pixel()              | 185298 |    332931 |     474968 |     474985 |
-| hagl_draw_line()              |   5058 |     21171 |      30235 |      30257 |
-| hagl_draw_vline()             |  62700 |     71762 |     102313 |     102313 |
-| hagl_draw_hline()             |  67611 |    204532 |     291288 |     291295 |
-| hagl_draw_circle()            |   1281 |      6200 |       8839 |       8841 |
-| hagl_fill_circle()            |    751 |      3622 |       5164 |       5164 |
-| hagl_draw_ellipse()           |   1446 |      6861 |       9779 |       9779 |
-| hagl_fill_ellipse()           |    725 |      3360 |       4792 |       4794 |
-| hagl_draw_triangle()          |   2379 |      9958 |      14180 |      14176 |
-| hagl_fill_triangle()          |   1112 |      1105 |       1576 |       1576 |
-| hagl_draw_rectangle()         |  20446 |     38846 |      55441 |      55443 |
-| hagl_fill_rectangle()         |   2834 |     15089 |      21489 |      21491 |
-| hagl_draw_rounded_rectangle() |   4374 |     19375 |      27558 |      27562 |
-| hagl_fill_rounded_rectangle() |   2276 |     10892 |      15510 |      15508 |
-| hagl_draw_polygon()           |   1938 |      7848 |      11245 |      11250 |
-| hagl_fill_polygon()           |    834 |       865 |       1234 |       1234 |
-| hagl_put_char()               |   5702 |     21454 |      30609 |      30612 |
+|                               | Single | Double | Double DMA | Triple DMA |
+| ----------------------------- | ------ | ------ | ---------- | ---------- |
+| hagl_put_pixel()              | 186326 | 337673 | 481708     | 481702     |
+| hagl_draw_line()              | 4990   | 27100  | 38652      | 38609      |
+| hagl_draw_vline()             | 62356  | 71148  | 101373     | 101369     |
+| hagl_draw_hline()             | 67192  | 199311 | 283852     | 283853     |
+| hagl_draw_circle()            | 1376   | 7286   | 10389      | 10390      |
+| hagl_fill_circle()            | 757    | 3534   | 5051       | 5053       |
+| hagl_draw_ellipse()           | 1463   | 7295   | 10395      | 10394      |
+| hagl_fill_ellipse()           | 721    | 3214   | 4587       | 4589       |
+| hagl_draw_triangle()          | 2430   | 12614  | 18014      | 18016      |
+| hagl_fill_triangle()          | 2683   | 6533   | 9308       | 9311       |
+| hagl_draw_rectangle()         | 20303  | 38168  | 54382      | 54380      |
+| hagl_fill_rectangle()         | 2825   | 15102  | 21505      | 21502      |
+| hagl_draw_rounded_rectangle() | 4429   | 20751  | 29599      | 29600      |
+| hagl_fill_rounded_rectangle() | 2245   | 10517  | 14964      | 14960      |
+| hagl_draw_polygon()           | 2001   | 9810   | 14011      | 14007      |
+| hagl_fill_polygon()           | 1848   | 4530   | 6471       | 6470       |
+| hagl_put_char()               | 5707   | 21887  | 31226      | 31230      |
+| hagl_put_text()               | 375    |        |            | 2228       |
 
 ## License
 
